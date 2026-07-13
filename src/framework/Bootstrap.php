@@ -1,9 +1,11 @@
 <?php
 namespace framework;
 use fileupload\FileUpload;
+use magichash\MagicHash;
 use ReflectionClass;
 use framework\Mapper;
-require __DIR__ . "/../fileUploadVulnerability/FileUpload.php";
+require __DIR__ . "/../FileUploadVulnerability/FileUpload.php";
+require __DIR__ . "/../MagicHashVulnerability/MagicHash.php";
 require __DIR__ . "/Mapper.php";
 class Bootstrap
 {
@@ -43,6 +45,10 @@ class Bootstrap
             $this->vulnerability_definition_providers,
             new ReflectionClass(FileUpload::class)
         );
+        array_push(
+            $this->vulnerability_definition_providers,
+            new ReflectionClass(MagicHash::class)
+        );
         $this->routing_url_to_mapper[
             "/VulnerableApp-php/FileUpload/LEVEL_1"
         ] = new Mapper(new ReflectionClass(FileUpload::class), "level1");
@@ -79,6 +85,16 @@ class Bootstrap
         $this->routing_url_to_mapper[
             "/VulnerableApp-php/FileUpload/LEVEL_12"
         ] = new Mapper(new ReflectionClass(FileUpload::class), "level12");
+
+        $this->routing_url_to_mapper[
+            "/VulnerableApp-php/MagicHash/LEVEL_1"
+        ] = new Mapper(new ReflectionClass(MagicHash::class), "level1");
+        $this->routing_url_to_mapper[
+            "/VulnerableApp-php/MagicHash/LEVEL_2"
+        ] = new Mapper(new ReflectionClass(MagicHash::class), "level2");
+        $this->routing_url_to_mapper[
+            "/VulnerableApp-php/MagicHash/LEVEL_3"
+        ] = new Mapper(new ReflectionClass(MagicHash::class), "level3");
     }
 }
 ?>
