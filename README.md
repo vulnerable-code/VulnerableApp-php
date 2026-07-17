@@ -14,5 +14,5 @@ For building the docker image and then using [VulnerableApp-Facade](https://gith
 ```
 
 ## Contact
-Please raise a github issue for enhancement/issues in VulnerableApp-jsp or send email to karan.sasan@owasp.org regarding queries
+Please raise a github issue for enhancement/issues in VulnerableApp-php or send email to karan.sasan@owasp.org regarding queries
 we will try to resolve issues asap.
